@@ -1,0 +1,133 @@
+﻿<UserControl x:Class="dam.di.inventario.clase.Vista.ControlesUsuario.UCGesModeloArticulo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dam.di.inventario.clase.Vista.ControlesUsuario"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1200">
+    <!--<Grid DockPanel.Dock="Top"></Grid>-->
+    <!--Poner el dock panel-->
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Style="{StaticResource gridEstiloFiltro}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Gestión de Modelo Articulo" Grid.Row="0" Style="{StaticResource textBlockEstiloTituloFiltro}"></TextBlock>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <TextBlock Text="Agrupar por tipo de articulo" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                <CheckBox x:Name="chkGroupTipo" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="chkGroupTipo_Checked" Unchecked="chkGroupTipo_Unchecked"></CheckBox>
+
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+
+                <TextBlock Text="Filtrar por tipo de articulo" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                <ComboBox x:Name="comboFiltroTipo" SelectionChanged="comboFiltroTipo_SelectionChanged" SelectedItem="{Binding tipoArtSeleccionadoComboFiltro}" 
+                          DisplayMemberPath="nombre" ItemsSource="{Binding listaTiposArtComboFiltro}" Text="Selecciona un elemento" Style="{StaticResource comboboxEstilofiltro}"></ComboBox>
+
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+
+                <TextBlock Text="Buscar por nombre" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                <TextBox x:Name="txtFiltroNombre" SelectionChanged="txtFiltroNombre_SelectionChanged" Style="{StaticResource textboxEstiloFiltro}"></TextBox>
+
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+
+                <Button x:Name="quitarFiltrosModeloArt" ToolTip="Quitar Filtros" Click="quitarFiltrosModeloArt_Click" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/quitarFiltros.png" Height="19" Width="19"></Image>
+                </Button>
+
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+
+                <Button x:Name="btnAgregarModeloArticuloFiltro" Click="btnAgregarModeloArticuloFiltro_Click" BorderBrush="Green" ToolTip="Agrega un nuevo elemento" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/agregar.png" Height="19" Width="19"></Image>
+                </Button>
+
+                <Button x:Name="btnEditarModeloArticuloFiltro" Click="btnEditarModeloArticuloFiltro_Click" BorderBrush="#2E9AFE" ToolTip="Edita un elemento seleccionado" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/editar.png" Height="19" Width="19"></Image>
+                </Button>
+
+                <Button x:Name="btnEliminarModeloArticuloFiltro" BorderBrush="Red" ToolTip="Elimina un elemento seleccionado" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/eliminar2.png" Height="19" Width="19"></Image>
+                </Button>
+
+
+
+            </StackPanel>
+
+        </Grid>
+
+
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1061*"/>
+                <ColumnDefinition Width="139*"/>
+            </Grid.ColumnDefinitions>
+            <!--Nota: si se usan filtros, utilizar el list collection view-->
+            <!--Items source sin list colletion view:
+            ItemsSource="{Binding listaModelosDataGrid}"-->
+            <DataGrid x:Name="dgModeloArticulo" ItemsSource="{Binding listaModelosListColletion}" AutoGenerateColumns="False" 
+                      CanUserAddRows="False" Grid.ColumnSpan="2">
+                <!--CanUserAddRows="False"-->
+                <!--Nota: si no se ponen 
+                las columns dentro de <DataGrid.Columns>, 
+                el programa dara error al abrir 
+                el user control-->
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="90"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Marca" Binding="{Binding marca}" Width="90"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Tipo de articulo" Binding="{Binding tipoarticulo.nombre}" Width="150"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Número de articulos" Binding="{Binding articulo.Count}" Width="180"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Modelo" Binding="{Binding modelo}" Width="90"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Descripción" Binding="{Binding descripcion}" Width="*"></DataGridTextColumn>
+                </DataGrid.Columns>
+                <!--Detalles de una lista, revisar sus estilos-->
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <StackPanel Style="{StaticResource stackPanelEstiloFiltro}">
+                            <TextBlock Text="Lista de articulos" Style="{StaticResource textBlockEstiloTituloFiltro}"></TextBlock>
+
+                            <!--
+                            <TextBlock Text="{Binding nombre}" Foreground="red"></TextBlock>
+                            -->
+
+                            <!--
+                            <ListBox ItemsSource="{Binding articulo}" DisplayMemberPath="numserie"></ListBox>
+                            -->
+                            <!--Si se pone un selected item ha de ser de articulo, no de modelo articulo / ejemplo incorrecto: SelectedItem="{Binding modeloSeleccionadoDeta}"-->
+                            <DataGrid ItemsSource="{Binding articulo}" AutoGenerateColumns="False" GridLinesVisibility="None">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Numero de serie" Binding="{Binding numserie}"></DataGridTextColumn>
+                                    <DataGridTextColumn Header="Usuario de alta" Binding="{Binding usuario.username}"></DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+
+                <!--contextmenu-->
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Añadir elemento" x:Name="anyadirModeloArt_ContextMenu" Click="anyadirModeloArt_ContextMenu_Click">
+                            
+                        </MenuItem>
+                        <MenuItem Header="Editar elemento" x:Name="editarModeloArt_ContextMenu" Click="editarModeloArt_ContextMenu_Click">
+                            <MenuItem.Icon>
+                                <Image Source="/Recursos/Iconos/editar.png" Height="20" Width="20"></Image>
+                            </MenuItem.Icon>
+                            <!--<Image>-->
+                        </MenuItem>
+                        <MenuItem Header="Borrar elemento" x:Name="borrarModeloArticulo_ContextMenu" Click="borrarModeloArticulo_ContextMenu_Click">
+                            <!--<image>-->
+                        </MenuItem>
+
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+
+</UserControl>

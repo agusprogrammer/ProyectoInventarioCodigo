@@ -1,0 +1,193 @@
+﻿<UserControl x:Class="dam.di.inventario.clase.Vista.ControlesUsuario.UCGesArticulo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:dam.di.inventario.clase.Vista.ControlesUsuario"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="1000">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top" Style="{StaticResource gridEstiloFiltro}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Gestión de Articulos" Grid.Row="0" Style="{StaticResource textBlockEstiloTituloFiltro}"></TextBlock>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="1">
+                <TextBlock Text="Agrupar por espacio" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                <CheckBox x:Name="chkGroupArtEspacio" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="chkGroupArtEspacio_Checked" Unchecked="chkGroupArtEspacio_Unchecked"></CheckBox>
+
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+
+                <TextBlock Text="Filtrar por departamento" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                <ComboBox x:Name="comboFiltroDept" SelectionChanged="comboFiltroDept_SelectionChanged" SelectedItem="{Binding deptSeleccionadoComboFiltro}" 
+                          DisplayMemberPath="nombre" ItemsSource="{Binding listaDepartamentos}" Text="Selecciona un elemento" Style="{StaticResource comboboxEstilofiltro}"></ComboBox>
+
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+
+                <!--
+                <TextBlock Text="Buscar por nombre" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                
+                <TextBox x:Name="txtFiltroNombre" SelectionChanged="txtFiltroNombre_SelectionChanged" Style="{StaticResource textboxEstiloFiltro}"></TextBox>
+                
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+                -->
+
+                <Button x:Name="quitarFiltrosArt" ToolTip="Quitar Filtros" Click="quitarFiltrosArt_Click" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/quitarFiltros.png" Height="19" Width="19"></Image>
+                </Button>
+
+                <Rectangle Style="{StaticResource rectangleEstiloSeparadorFiltro}"></Rectangle>
+
+                <Button x:Name="btnAgregarArticuloFiltro" BorderBrush="Green" ToolTip="Agrega un nuevo elemento" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/agregar.png" Height="19" Width="19"></Image>
+                </Button>
+
+                <Button x:Name="btnEditarArticuloFiltro" BorderBrush="#2E9AFE" ToolTip="Edita un elemento seleccionado" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/editar.png" Height="19" Width="19"></Image>
+                </Button>
+
+                <Button x:Name="btnEliminarArticuloFiltro" BorderBrush="Red" ToolTip="Elimina un elemento seleccionado" Style="{StaticResource botonEstiloFiltro}">
+                    <Image Source="/Recursos/Iconos/eliminar2.png" Height="19" Width="19"></Image>
+                </Button>
+
+            </StackPanel>
+        </Grid>
+
+        <Grid DockPanel.Dock="Bottom">
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>-->
+            <DataGrid ItemsSource="{Binding listaArticulosListColletion}" AutoGenerateColumns="False" Grid.ColumnSpan="2">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Nombre de modelo" Binding="{Binding modeloarticulo.nombre}" Width="160"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Numero de serie" Binding="{Binding numserie}" Width="150"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Estado" Binding="{Binding estado}" Width="90"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Espacio" Binding="{Binding espacio1.nombre}" Width="90"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Departamento" Binding="{Binding departamento1.nombre}" Width="200"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Fecha de alta" Width="*">
+                        <!--Columna personalizada-->
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <DatePicker Margin="2" Width="100" HorizontalAlignment="Left" SelectedDate="{Binding fechaalta}">
+
+                                </DatePicker>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn Header="Nombre usuario" Width="*">
+                        <!--Columna personalizada-->
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Text="{Binding usuario.nombre}" Margin="0,0,5,0"></TextBlock>
+                                    <TextBlock Text="{Binding usuario.apellido1}"></TextBlock>
+                                    <!--<TextBlock Text="{Binding usuario.apellido2}"></TextBlock>-->
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                <!-- Detalles -->
+                <DataGrid.RowDetailsTemplate>
+                    <DataTemplate>
+                        <StackPanel Style="{StaticResource stackPanelEstiloFiltro}">
+                            <TextBlock Text="Lista de salidas del articulo" Style="{StaticResource textBlockEstiloTituloFiltro}"></TextBlock>
+                            <!--<StackPanel Orientation="Horizontal">
+                                <ListBox Grid.Row="0" Grid.Column="0" ItemsSource="{Binding modeloarticulo}" DisplayMemberPath="nombre"></ListBox>
+                            </StackPanel>-->
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                    <RowDefinition Height="auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <TextBlock Grid.Row="0" Grid.Column="0" Style="{StaticResource textoTitulosListBox}" Text="Nombre de usuario"></TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Style="{StaticResource textoTitulosListBox}" Text="Rol de usuario"></TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="2" Style="{StaticResource textoTitulosListBox}" Text="Tipo de usuario"></TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="3" Style="{StaticResource textoTitulosListBox}" Text="Grupo"></TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="4" Style="{StaticResource textoTitulosListBox}" Text="Departamento"></TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="5" Style="{StaticResource textoTitulosListBox}" Text="Fecha de salida"></TextBlock>
+                                <TextBlock Grid.Row="0" Grid.Column="6" Style="{StaticResource textoTitulosListBox}" Text="Fecha de devolución"></TextBlock>
+                                
+                                <!--Se puede usar ListView en vez de listbox-->
+                                <!--<ListView Grid.Row="1" Grid.Column="0" ItemsSource="{Binding salida}" DisplayMemberPath="usuario1.nombre" Foreground="Black"></ListView>-->
+                                <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding salida}" DisplayMemberPath="usuario1.nombre" Foreground="Black"></ListBox>
+                                <ListBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding salida}" DisplayMemberPath="usuario1.rol1.nombre" ></ListBox>
+                                <ListBox Grid.Row="1" Grid.Column="2" ItemsSource="{Binding salida}" DisplayMemberPath="usuario1.tipousuario.nombre" Foreground="Black"></ListBox>
+                                <ListBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding salida}" DisplayMemberPath="usuario1.grupo1.nombre"></ListBox>
+                                <ListBox Grid.Row="1" Grid.Column="4" ItemsSource="{Binding salida}" DisplayMemberPath="usuario1.departamento1.nombre" Foreground="Black"></ListBox>
+                                <ListBox Grid.Row="1" Grid.Column="5" ItemsSource="{Binding salida}" DisplayMemberPath="fechasalida" Foreground="DarkRed"></ListBox>
+                                <ListBox Grid.Row="1" Grid.Column="6" ItemsSource="{Binding salida}" DisplayMemberPath="fechadevolucion" Foreground="Green"></ListBox>
+                                <!--Otra forma de listbox-->
+                                <!--
+                                <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding salida}" DisplayMemberPath="usuario1.nombre" Foreground="Black">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding usuario1.nombre}" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                                                <TextBlock Text="{Binding usuario1.rol1.nombre}" Style="{StaticResource textBlockEstiloEtiquetasFiltro}"></TextBlock>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                                -->
+                                
+                            </Grid>
+                            
+                            <!--Lo mismo con datagrid-->
+                            <!--
+                            <Grid>
+                                <DataGrid ItemsSource="{Binding salida}" AutoGenerateColumns="False" GridLinesVisibility="None">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="usuario" Binding="{Binding usuario1.nombre}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Rol" Binding="{Binding usuario1.rol1.nombre}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Tipo usuario" Binding="{Binding usuario1.tipousuario.nombre}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Grupo" Binding="{Binding usuario1.grupo1.nombre}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Departamento" Binding="{Binding usuario1.departamento1.nombre}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Fecha de salida" Binding="{Binding fechasalida}"></DataGridTextColumn>
+                                        <DataGridTextColumn Header="Fecha de devolución" Binding="{Binding fechadevolucion}"></DataGridTextColumn>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>-->
+                            
+                        </StackPanel>
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
+                
+                <!--Contexmenu-->
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Añadir elemento">
+                            
+                        </MenuItem>
+                        <MenuItem Header="Editar elemento" x:Name="editarArticulo">
+                            <!--Poner imagen-->
+                        </MenuItem>
+                        <MenuItem>
+                            <!--Poner imagen-->
+                        </MenuItem>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                
+            </DataGrid>
+        </Grid>
+    </DockPanel>
+</UserControl>

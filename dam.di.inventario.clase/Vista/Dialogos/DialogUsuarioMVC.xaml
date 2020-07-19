@@ -1,0 +1,101 @@
+﻿<Window x:Class="dam.di.inventario.clase.Vista.Dialogos.DialogUsuarioMVC"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:dam.di.inventario.clase.Vista.Dialogos"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d" ResizeMode="NoResize"
+        Title="DialogUsuarioMVC" Height="750" Width="850">
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border Background="#6E6E6E"></Border>
+            <TextBlock Text="Alta de Usuario" Style="{StaticResource stbTitulo}"></TextBlock>
+
+        </Grid>
+        <Grid DockPanel.Dock="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+
+
+            </Grid.RowDefinitions>
+
+            <Border Background="#2E9AFE" Grid.ColumnSpan="4" Grid.RowSpan="11"></Border>
+
+            <TextBlock Text="* Los siguientes campos son obligatorios" FontSize="16" Margin="40,5,5,5"
+                       Foreground="#2E9AFE" Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="2" 
+                       Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+
+            <TextBlock Text="Datos de usuario" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" FontSize="20" Foreground="White" TextDecorations="underline" Margin="40,5,5,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+
+            <TextBlock Text="Username*" Grid.Column="0" Grid.Row="1" Foreground="White" Margin="40,5,5,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Contraseña*" Grid.Column="1" Grid.Row="1" Foreground="White" Margin="40,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Tipo*" Grid.Column="2" Grid.Row="1" Foreground="White" Margin="30,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Rol*" Grid.Column="3" Grid.Row="1" Foreground="White" Margin="30,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+
+            <TextBox x:Name="textboxUsername" TextChanged="textboxUsername_TextChanged" Grid.Row="2" Height="30" Width="120" Margin="40,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></TextBox>
+            <PasswordBox x:Name="passContrasenya" PasswordChanged="passContrasenya_PasswordChanged" Grid.Row="2" Grid.Column="1" Height="30" Width="120" Margin="20,5,40,5" Style="{StaticResource txtPasswordEstiloDialogo}"></PasswordBox>
+            <ComboBox x:Name="comboTipoUsu" SelectionChanged="comboTipoUsu_SelectionChanged" DisplayMemberPath="nombre" Text="Tipo" FontSize="16" Grid.Row="2" Grid.Column="2" Height="30" Width="120" Margin="30,5,40,5" Style="{StaticResource comboEstiloDialogo}"></ComboBox>
+            <ComboBox x:Name="comboRolUsu" SelectionChanged="comboRolUsu_SelectionChanged" DisplayMemberPath="nombre" Text="Rol" FontSize="16" Grid.Row="2" Grid.Column="3" Height="30" Width="120" Margin="30,5,40,5" Style="{StaticResource comboEstiloDialogo}"></ComboBox>
+
+            <TextBlock Text="Nombre*" Grid.Row="6" Foreground="White" Margin="40,5,5,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Apellido 1*" Grid.Row="6" Grid.Column="1" Foreground="White" Margin="40,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Apellido 2" Grid.Row="6" Grid.Column="2" Foreground="White" Margin="30,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Domicilio" Grid.Row="6" Grid.Column="3" Foreground="White" Margin="30,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+
+            <TextBox x:Name="textboxNombre" TextChanged="textboxNombre_TextChanged" FontSize="16"  Grid.Row="7" Height="30" Width="120" Margin="40,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></TextBox>
+            <TextBox x:Name="textboxApellido1" TextChanged="textboxApellido1_TextChanged" FontSize="16" Grid.Row="7" Grid.Column="1" Height="30" Width="120" Margin="40,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></TextBox>
+            <TextBox x:Name="textboxApellido2" FontSize="16" Grid.Row="7" Grid.Column="2" Height="30" Width="120" Margin="30,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></TextBox>
+            <TextBox x:Name="textboxDomicilio" FontSize="16" Grid.Row="7" Grid.Column="3" Height="30" Width="120" Margin="30,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></TextBox>
+
+            <TextBlock Text="Datos personales" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2" FontSize="20" Foreground="White" TextDecorations="underline" Margin="40,5,5,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+
+            <TextBlock Text="Población"  Grid.Row="8" Foreground="White" Margin="40,5,5,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Codigo postal" Grid.Row="8" Grid.Column="1" Foreground="White" Margin="40,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Email" Grid.Row="8" Grid.Column="2" Foreground="White" Margin="30,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <TextBlock Text="Teléfono" Grid.Row="8" Grid.Column="3" Foreground="White" Margin="30,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+
+            <TextBox x:Name="textboxPoblacion" Grid.Row="9" Grid.Column="0" Height="30" Width="120" Margin="40,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></TextBox>
+            <xctk:MaskedTextBox x:Name="textboxCodigoPostal" Mask="99999" IncludeLiteralsInValue="False" IncludePromptInValue="False" Grid.Row="9" Grid.Column="1" Height="30" Width="120" Margin="40,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></xctk:MaskedTextBox>
+            <TextBox x:Name="textboxEmail" Grid.Row="9" Grid.Column="2" Height="30" Width="120" Margin="30,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></TextBox>
+            <xctk:MaskedTextBox x:Name="textboxTelefono" Mask="+(34)999-999-999" IncludeLiteralsInValue="False" IncludePromptInValue="False" Grid.Row="9" Grid.Column="3" Height="30" Width="120" Margin="30,5,40,5" Style="{StaticResource textboxEstiloDialogo}"></xctk:MaskedTextBox>
+
+            <TextBlock Text="Grupo" Grid.Row="3" Foreground="White" Margin="40,5,5,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <!--Poner a IsEnabled="False"-->
+            <ComboBox x:Name="comboGrupoUsu" DisplayMemberPath="nombre" Text="Grupo" IsEnabled="False" FontSize="16" Grid.Row="4" Grid.Column="0" Height="30" Width="320" Grid.ColumnSpan="2" Margin="40,5,40,5" Style="{StaticResource comboEstiloDialogo}"></ComboBox>
+
+            <TextBlock Text="Departamento" Grid.Row="3" Grid.Column="2" Foreground="White" Margin="30,5,40,5" Style="{StaticResource txtEstiloTextDialogo}"></TextBlock>
+            <!--Poner a IsEnabled="False"-->
+            <ComboBox x:Name="comboDepartamentoUsu" DisplayMemberPath="nombre" Text="Departamento" IsEnabled="False" FontSize="16" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Height="30" Width="320" Margin="30,5,40,5" Style="{StaticResource comboEstiloDialogo}"></ComboBox>
+
+            <Button x:Name="btnGuardarUsu" Click="btnGuardarUsu_Click" Grid.Row="10" Grid.Column="3" Height="30" Width="60" Content="guardar" Background="White" Foreground="#2E9AFE" HorizontalAlignment="Right" Margin="10,10,60,10" Style="{StaticResource estiloBotonPantallaLogin}"></Button>
+            <Button x:Name="btnCancelarUsu" Click="btnCancelarUsu_Click" Grid.Row="10" Grid.Column="3" Height="30" Width="60" Margin="10,10,130,10" Content="cancelar" HorizontalAlignment="Right" Style="{StaticResource estiloBotonPantallaLogin}"></Button>
+
+        </Grid>
+
+    </DockPanel>
+</Window>

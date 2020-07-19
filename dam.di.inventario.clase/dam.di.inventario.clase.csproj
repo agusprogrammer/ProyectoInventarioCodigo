@@ -1,0 +1,348 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C2083582-31FF-4935-B74B-EB1289E12F11}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>dam.di.inventario.clase</RootNamespace>
+    <AssemblyName>dam.di.inventario.clase</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Accordion, Version=3.5.40128.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Accordion.1.0.0\lib\Accordion.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.11\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.4.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Modelo\articulo.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\departamento.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\espacio.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ficheromodelo.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ficherousuario.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\grupo.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ModelInventario.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelInventario.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ModelInventario.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ModelInventario.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelInventario.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\modeloarticulo.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\permiso.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\permisosrol.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\rol.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\salida.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\tipoarticulo.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\tipousuario.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\usuario.cs">
+      <DependentUpon>ModelInventario.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MVVM\MVArticulo.cs" />
+    <Compile Include="MVVM\MVBase.cs" />
+    <Compile Include="MVVM\MVDepartamentos.cs" />
+    <Compile Include="MVVM\MVModelo.cs" />
+    <Compile Include="MVVM\MVUsuario.cs" />
+    <Compile Include="Servicios\ArticuloServicio.cs" />
+    <Compile Include="Servicios\DptoServicio.cs" />
+    <Compile Include="Servicios\EspacioServicio.cs" />
+    <Compile Include="Servicios\GrupoServicio.cs" />
+    <Compile Include="Servicios\IServicioGenerico.cs" />
+    <Compile Include="Servicios\ModeloArticuloServicio.cs" />
+    <Compile Include="Servicios\RolServicio.cs" />
+    <Compile Include="Servicios\SalidaServicio.cs" />
+    <Compile Include="Servicios\ServicioGenerico.cs" />
+    <Compile Include="Servicios\TipoArticuloServicio.cs" />
+    <Compile Include="Servicios\TipoUsuarioServicio.cs" />
+    <Compile Include="Servicios\UsuarioServicio.cs" />
+    <Compile Include="Validacion\ValidaMVC.cs" />
+    <Compile Include="Vista\ControlesUsuario\UCAdministracionArboles.xaml.cs">
+      <DependentUpon>UCAdministracionArboles.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCArbolDeptartamentos.xaml.cs">
+      <DependentUpon>UCArbolDeptartamentos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCArbolDeptCodigo.xaml.cs">
+      <DependentUpon>UCArbolDeptCodigo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCGesArticulo.xaml.cs">
+      <DependentUpon>UCGesArticulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCGesModeloArticulo.xaml.cs">
+      <DependentUpon>UCGesModeloArticulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\ControlesUsuario\UCGesUsuario.xaml.cs">
+      <DependentUpon>UCGesUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dialogos\DialogArticuloMVC.xaml.cs">
+      <DependentUpon>DialogArticuloMVC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dialogos\DialogArticuloMVVM.xaml.cs">
+      <DependentUpon>DialogArticuloMVVM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dialogos\DialogModeloArticuloMVVM.xaml.cs">
+      <DependentUpon>DialogModeloArticuloMVVM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dialogos\DialogModeloArticuloMVC.xaml.cs">
+      <DependentUpon>DialogModeloArticuloMVC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dialogos\DialogUsuarioMVC.xaml.cs">
+      <DependentUpon>DialogUsuarioMVC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dialogos\DialogUsuarioMVVM.xaml.cs">
+      <DependentUpon>DialogUsuarioMVVM.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vista\Dialogos\LoginDialog.xaml.cs">
+      <DependentUpon>LoginDialog.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Recursos\Estilos\Estilos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCAdministracionArboles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCArbolDeptartamentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCArbolDeptCodigo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCGesArticulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCGesModeloArticulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\ControlesUsuario\UCGesUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Dialogos\DialogArticuloMVC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Dialogos\DialogArticuloMVVM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Dialogos\DialogModeloArticuloMVVM.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Vista\Dialogos\DialogModeloArticuloMVC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Dialogos\DialogUsuarioMVC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Dialogos\DialogUsuarioMVVM.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vista\Dialogos\LoginDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Resource Include="Recursos\Iconos\salidaUser.png" />
+    <Resource Include="Recursos\Iconos\usuarioArbol.png" />
+    <Resource Include="Recursos\Iconos\dept.png" />
+    <Resource Include="Recursos\Iconos\arbol2.png" />
+    <Resource Include="Recursos\Iconos\arbol.png" />
+    <Resource Include="Recursos\Iconos\agregar.png" />
+    <Resource Include="Recursos\Iconos\editar.png" />
+    <Resource Include="Recursos\Iconos\eliminar.png" />
+    <Resource Include="Recursos\Iconos\eliminar2.png" />
+    <Resource Include="Recursos\Iconos\quitarFiltros.png" />
+    <Resource Include="Recursos\Iconos\error.png" />
+    <Resource Include="Recursos\Iconos\iconoAplicacion.png" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EntityDeploy Include="Modelo\ModelInventario.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelInventario.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\ModelInventario.edmx.diagram">
+      <DependentUpon>ModelInventario.edmx</DependentUpon>
+    </None>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Modelo\ModelInventario.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ModelInventario.Context.cs</LastGenOutput>
+      <DependentUpon>ModelInventario.edmx</DependentUpon>
+    </Content>
+    <Content Include="Modelo\ModelInventario.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelInventario.edmx</DependentUpon>
+      <LastGenOutput>ModelInventario.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Recursos\Iconos\opciones.png" />
+    <Resource Include="Recursos\Iconos\salida32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,343 @@
+﻿<Window x:Class="dam.di.inventario.clase.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ac="clr-namespace:System.Windows.Controls;assembly=Accordion"
+        xmlns:ex="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:dam.di.inventario.clase"
+        mc:Ignorable="d" WindowState="Maximized"
+        Icon="/Recursos/Iconos/iconoAplicacion.png"
+        Title="MainWindow" Height="650" Width="800">
+    <Grid x:Name="gridGeneral">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Column="0" Grid.Row="0" Fill="#6E6E6E"></Rectangle>
+        <TextBlock Text="Gestión de Inventario" Margin="15" FontSize="20" Foreground="White"></TextBlock>
+
+        <Rectangle Grid.Column="1" Grid.Row="0" Fill="#2E9AFE"></Rectangle>
+        
+        <!--Barra de botones-->
+        <Grid Grid.Column="1" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+                <ColumnDefinition Width="auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <!--Poner para que salga con fondo cuando esta hover-->
+            <Button x:Name="botonOpciones" MouseEnter="botonOpciones_MouseEnter" MouseLeave="botonOpciones_MouseLeave" Grid.Column="1" ToolTip="Opciones" Style="{StaticResource botonBarraSup}">
+                <Grid>
+                    <Rectangle x:Name="rectBotonOp" Fill="#2E9AFE" Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=ActualWidth}"
+                               Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=ActualHeight}"></Rectangle>
+                    <Image Source="Recursos/Iconos/opciones.png" Height="50" Width="50"></Image>
+                </Grid>
+            </Button>
+
+            <Button x:Name="botonSalir" Click="botonSalir_Click" MouseEnter="botonSalir_MouseEnter" MouseLeave="botonSalir_MouseLeave" Grid.Column="2" ToolTip="Salir" Style="{StaticResource botonBarraSup}">
+                <Grid>
+                    <Rectangle x:Name="rectBotonSalir" Fill="#2E9AFE" Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=ActualWidth}"
+                               Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Button}}, Path=ActualHeight}"></Rectangle>
+                    <Image Source="Recursos/Iconos/salida32.png" Height="50" Width="50"></Image>
+                </Grid>
+            </Button>
+            
+            <!--Modificar dropdown button-->
+            <!--
+            <ex:DropDownButton Height="25" Width="100" Background="Transparent" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center">
+                <ex:DropDownButton.Content>
+                    <StackPanel>
+                        <TextBlock x:Name="tbNombreUsu" Margin="5,0,0,0" Foreground="White"></TextBlock>
+                    </StackPanel>
+                </ex:DropDownButton.Content>
+                <ex:DropDownButton.DropDownContent>
+                    <StackPanel>
+                        <MenuItem Header="Modificar">
+                            <MenuItem.Icon>
+                                <Image Source="Recursos/Iconos/iconoAplicacion.png" Height="20" Width="20"></Image>
+                            </MenuItem.Icon>
+                            
+                        </MenuItem>
+                        <MenuItem Header="Modificar Perfil">
+                            <MenuItem.Icon>
+                                <Image Source="Recursos/Iconos/iconoAplicacion.png" Height="20" Width="20"></Image>
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Cerrar sesion">
+                            <MenuItem.Icon>
+                                <Image Source="Recursos/Iconos/iconoAplicacion.png" Height="20" Width="20"></Image>   
+                            </MenuItem.Icon>
+                            
+                        </MenuItem>
+                    </StackPanel>
+                </ex:DropDownButton.DropDownContent>
+            </ex:DropDownButton>
+            -->
+
+
+        </Grid>
+        
+        
+        <Rectangle Fill="#2E9AFE" Grid.Column="0" Grid.Row="1"></Rectangle>
+        
+        
+        <!--Accordion-->
+        <Grid Grid.Column="0" Grid.Row="1">
+            <!--
+            <ac:Accordion VerticalAlignment="Stretch" BorderBrush="Transparent" Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+                <ac:AccordionItem Style="{StaticResource acItemEstilo}">
+                    <ac:AccordionItem.Header>
+                        <Grid Height="50">
+                            <TextBlock Text="Usuarios" HorizontalAlignment="Center" FontSize="20" Margin="10"></TextBlock>
+                        </Grid>
+                    </ac:AccordionItem.Header>
+                    <StackPanel Background="#2E9AFE"
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+                        
+                    </StackPanel>
+                </ac:AccordionItem>
+            </ac:Accordion>
+            -->
+            
+            <ac:Accordion VerticalAlignment="Stretch" BorderBrush="Transparent" Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}" Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+                <ac:AccordionItem Style="{StaticResource acItemEstilo}">
+                    <ac:AccordionItem.Header>
+                        <Grid Height="50">
+                            <TextBlock Text="Usuarios" HorizontalAlignment="Center" FontSize="20" Margin="10"></TextBlock>
+                        </Grid>
+                    </ac:AccordionItem.Header>
+                    <StackPanel Background="#2E9AFE"
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+
+                        <Button x:Name="botonAnyadirUsuario" Click="botonAnyadirUsuario_Click" MouseEnter="botonAnyadirUsuario_MouseEnter" MouseLeave="botonAnyadirUsuario_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtAnyadirUsu" Text="Añadir Usuario" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonEditarUsuario" MouseEnter="botonEditarUsuario_MouseEnter" MouseLeave="botonEditarUsuario_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtEditarUsu" Text="Editar Usuario" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonListarUsuarios" Click="botonListarUsuarios_Click" MouseEnter="botonListarUsuarios_MouseEnter" MouseLeave="botonListarUsuarios_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtListarUsu" Text="Listar Usuarios" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+                        
+                        <!--Usuarios MVVM-->
+                        <Button x:Name="botonAnyadirUsuarioMVVM" Height="70" Click="botonAnyadirUsuarioMVVM_Click" MouseEnter="botonAnyadirUsuarioMVVM_MouseEnter" MouseLeave="botonAnyadirUsuarioMVVM_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtAnyadirUsuMVVM" Style="{StaticResource TxtEstiloBotonAccordion}">
+                                    Añadir Usuario
+                                    <LineBreak></LineBreak>
+                                    MVVM
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+                </ac:AccordionItem>
+
+                <ac:AccordionItem Style="{StaticResource acItemEstilo}">
+                    <ac:AccordionItem.Header>
+                        <Grid Height="50">
+                            <TextBlock Text="Articulos" HorizontalAlignment="Center" FontSize="20" Margin="10"></TextBlock>
+                        </Grid>
+                    </ac:AccordionItem.Header>
+                    <StackPanel Background="#2E9AFE"
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+
+                        <Button x:Name="botonAnyadirArticulo" Click="botonAnyadirArticulo_Click" MouseEnter="botonAnyadirArticulo_MouseEnter" MouseLeave="botonAnyadirArticulo_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtAnyadirArticulo" Text="Añadir Articulo" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonEditarArticulo" MouseEnter="botonEditarArticulo_MouseEnter" MouseLeave="botonEditarArticulo_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtEditarArticulo" Text="Editar Articulo" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonListarArticulos" Click="botonListarArticulos_Click" MouseEnter="botonListarArticulos_MouseEnter" MouseLeave="botonListarArticulos_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtListarArticulos" Text="Listar Articulos" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonAnyadirArticuloMVVM" Click="botonAnyadirArticuloMVVM_Click" Height="70" MouseEnter="botonAnyadirArticuloMVVM_MouseEnter" MouseLeave="botonAnyadirArticuloMVVM_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtAnyadirArticuloMVVM" Style="{StaticResource TxtEstiloBotonAccordion}">
+                                    Añadir Articulo
+                                    <LineBreak></LineBreak>
+                                    MVVM
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+                </ac:AccordionItem>
+
+                <ac:AccordionItem Style="{StaticResource acItemEstilo}">
+                    <ac:AccordionItem.Header>
+                        <Grid Height="70">
+                            <TextBlock HorizontalAlignment="Center" FontSize="20" Margin="10">
+                                Modelos de
+                                <LineBreak></LineBreak>
+                                Articulo
+                            </TextBlock>
+                        </Grid>
+                    </ac:AccordionItem.Header>
+                    <StackPanel Background="#2E9AFE"
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+
+                        <Button x:Name="botonAnyadirModelosArticulos" Click="botonAnyadirModelosArticulos_Click" MouseEnter="botonAnyadirModelosArticulos_MouseEnter" MouseLeave="botonAnyadirModelosArticulos_MouseLeave" Height="90" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtAnyadirModelosArticulos" Style="{StaticResource TxtEstiloBotonAccordion}">
+                                    Añadir Modelo 
+                                    <LineBreak></LineBreak> 
+                                    MVC
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonAnyadirModelosArticulosMVVM" Click="botonAnyadirModelosArticulosMVVM_Click" MouseEnter="botonAnyadirModelosArticulosMVVM_MouseEnter" MouseLeave="botonAnyadirModelosArticulosMVVM_MouseLeave" Height="90" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtAnyadirModelosArticulosMVVM" Style="{StaticResource TxtEstiloBotonAccordion}">
+                                    Añadir Modelo 
+                                    <LineBreak></LineBreak>
+                                    MVVM
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+                        
+                        <!-- Boton listar modelos de articulos -->
+                        <Button x:Name="botonListarModelosArticulosMVVM" Click="botonListarModelosArticulosMVVM_Click" MouseEnter="botonListarModelosArticulosMVVM_MouseEnter" MouseLeave="botonListarModelosArticulosMVVM_MouseLeave" Height="90" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtListarModelosArticulosMVVM" Style="{StaticResource TxtEstiloBotonAccordion}">
+                                    Listar Modelos 
+                                    <LineBreak></LineBreak>
+                                    MVVM
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+                        
+
+                    </StackPanel>
+                </ac:AccordionItem>
+
+                <ac:AccordionItem Background="#2E9AFE" BorderBrush="#2E9AFE" Style="{StaticResource acItemEstilo}">
+                    <ac:AccordionItem.Header>
+                        <Grid Height="50">
+                            <TextBlock Text="Inventario" HorizontalAlignment="Center" FontSize="20" Margin="10"></TextBlock>
+                        </Grid>
+                    </ac:AccordionItem.Header>
+                    <StackPanel Background="#2E9AFE"
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+
+                        <Button x:Name="botonNuevoInventario" MouseEnter="botonNuevoInventario_MouseEnter" MouseLeave="botonNuevoInventario_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtNuevoInventario" Text="Nuevo Inventario" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonEditarInventario" MouseEnter="botonEditarInventario_MouseEnter" MouseLeave="botonEditarInventario_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtEditarInventario" Text="Editar Inventario" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+                </ac:AccordionItem>
+
+                <ac:AccordionItem Style="{StaticResource acItemEstilo}">
+                    <ac:AccordionItem.Header>
+                        <Grid Height="50">
+                            <TextBlock Text="Prestamos" HorizontalAlignment="Center" FontSize="20" Margin="10"></TextBlock>
+                        </Grid>
+                    </ac:AccordionItem.Header>
+                    <StackPanel Background="#2E9AFE"
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+
+                        <Button x:Name="botonEntradaPrestamos" MouseEnter="botonEntradaPrestamos_MouseEnter" MouseLeave="botonEntradaPrestamos_MouseLeave" Height="90" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtEntradaPrestamos" Style="{StaticResource TxtEstiloBotonAccordion}">
+                                    Entrada de 
+                                    <LineBreak></LineBreak>
+                                    Prestamos
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonSalidaPrestamos" MouseEnter="botonSalidaPrestamos_MouseEnter" MouseLeave="botonSalidaPrestamos_MouseLeave" Height="90" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtSalidaPrestamos" Style="{StaticResource TxtEstiloBotonAccordion}">
+                                    Salida de
+                                    <LineBreak></LineBreak>
+                                    Prestamos
+                                </TextBlock>
+                            </StackPanel>
+                        </Button>
+                        
+                    </StackPanel>
+                </ac:AccordionItem>
+
+                <ac:AccordionItem Style="{StaticResource acItemEstilo}">
+                    <ac:AccordionItem.Header>
+                        <Grid Height="50">
+                            <TextBlock Text="Información" HorizontalAlignment="Center" FontSize="20" Margin="10"></TextBlock>
+                        </Grid>
+                    </ac:AccordionItem.Header>
+                    <StackPanel Background="#2E9AFE"
+                                 Width="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualWidth}"
+                                 Height="{Binding RelativeSource={RelativeSource AncestorType={x:Type Grid}}, Path=ActualHeight}">
+
+                        <Button x:Name="botonInformes" MouseEnter="botonInformes_MouseEnter" MouseLeave="botonInformes_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtInformes" Text="Informes" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonCharts" MouseEnter="botonCharts_MouseEnter" MouseLeave="botonCharts_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtCharts" Text="Charts" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                        <Button x:Name="botonArboles" Click="botonArboles_Click" MouseEnter="botonArboles_MouseEnter" MouseLeave="botonArboles_MouseLeave" Style="{StaticResource botonBarraAcordion}">
+                            <StackPanel>
+                                <TextBlock x:Name="txtArboles" Text="Arboles" Style="{StaticResource TxtEstiloBotonAccordion}"></TextBlock>
+                            </StackPanel>
+                        </Button>
+
+                    </StackPanel>
+                </ac:AccordionItem>
+
+            </ac:Accordion>
+            
+        </Grid>
+        
+        <!--Pantalla de datos-->
+        <Grid x:Name="gridCentral" Grid.Column="1" Grid.Row="1">
+            
+        </Grid>
+        
+    </Grid>
+</Window>
